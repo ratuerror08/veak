@@ -258,7 +258,7 @@ def Menu():
 	banner()
 	print('')
 	print('')
-	print (' %s[%s01%s] %sCrack dari daftar teman '%(O,P,O,P))
+	print (' %s[%s01%s] %sCrack %sUNLIMITED '%(O,P,O,P,h))
 	print (' %s[%s02%s] %sCrack dari total pengikut'%(O,P,O,P))
 	print (' %s[%s03%s] %sCrack dari reaction post'%(O,P,O,P))
 	print (' %s[%s04%s] %sCrack dari komentar post'%(O,P,O,P))
