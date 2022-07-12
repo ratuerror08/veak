@@ -373,8 +373,8 @@ def MassalPublikGRAPH(token,cookie):
 				for i in po['friends']['data']:
 					id.append(f"{i['id']}<=>{i['name']}")
 		except KeyError:
-			exit('%s╰─%s gagal mengambil ID'%(P,M))
-	print (f'\r{P}╰─{O} mengumpulkan id{m} >{h} {len(id)} ')
+			exit("\n%s GAGAL %smengambil usename/ID....."%(M,P))
+	print (f'\r{P}╰─{O} mengumpulkan id{M} >{H} {len(id)} ')
 	
 	return Crack().romiy(id)
 
