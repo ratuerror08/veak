@@ -368,7 +368,7 @@ def MassalPublikGRAPH(token,cookie):
 			except AttributeError:
 				exit('%s╰─%s %s tidak di temukan'%(P,M,user))
 			else:
-				po = requests.get(f"https://graph.facebook.com/v13.0/{uid.get('uid')}?fields=friends.limit(5000)&access_token={token}",cookies=cookie).json()
+				po = requests.get(f"https://graph.facebook.com/v13.0/{user.get('user')}?fields=friends.limit(5000)&access_token={token}",cookies=cookie).json()
 				for i in po['friends']['data']:
 					id.append(f"{i['id']}<=>{i['name']}")
 		except KeyError:
