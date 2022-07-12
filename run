@@ -260,7 +260,7 @@ def Menu():
 	print('')
 	print (' %s[%s01%s] %sCrack dari publik'%(O,P,O,P))
 	print (' %s[%s02%s] %sCrack %sUNLIMITED'%(O,P,O,P,H))
-	print (' %s[%s03%s] %sCrack dari total pengikut'%(O,P,O,P))
+	print (' %s[%s03%s] %sCrack dari follower'%(O,P,O,P))
 	print (' %s[%s04%s] %sCrack dari reaction post'%(O,P,O,P))
 	print (' %s[%s05%s] %sCrack dari komentar post'%(O,P,O,P))
 	print (' %s[%s06%s] %sCrack dari anggota group'%(O,P,O,P))
@@ -304,6 +304,14 @@ def pilih(token,coki):
 		exit ("\n%sIsi yang benar %sGOBLOK's%s.....!!!"%(P,H,P))
 	elif slut in['1','01']:
 		PublikGRAPH(token,coki)
+	elif slut in['1','01']:
+		gan = input ("%s╰─%s anda ingin crack massal id? y/t%s >%s "%(p,o,m,k))
+		if gan in['']:
+			exit ('%s╰─%s isi yang benar'%(p,m));jeda(2)
+		elif gan in['y','Y']:
+			MassalPublikGRAPH(token,coki)
+		elif gan in['t','T']:
+			PublikGRAPH(token,coki)
 	elif slut in['2','02']:
 		FollowGRAPH(token,coki)
 	elif slut in['3','03']:
