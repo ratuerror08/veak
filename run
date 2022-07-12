@@ -305,9 +305,9 @@ def pilih(token,coki):
 	elif slut in['1','01']:
 		PublikGRAPH(token,coki)
 	elif slut in['2','02']:
-		gan = input ("%s╰─%s anda ingin crack massal id? y/t%s >%s "%(p,o,m,k))
+		gan = input ("%s╰─%s anda ingin crack massal id? y/t%s >%s "%(P,H,M,K))
 		if gan in['']:
-			exit ('%s╰─%s isi yang benar'%(p,m));jeda(2)
+			exit ('%s╰─%s isi yang benar'%(P,M));jeda(2)
 		elif gan in['y','Y']:
 			MassalPublikGRAPH(token,coki)
 		elif gan in['t','T']:
