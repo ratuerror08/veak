@@ -355,7 +355,7 @@ def PublikGRAPH(token,cookie):
 #--- CRACK UNLILMITED
 def MassalPublikGRAPH(token,cookie):
 	try:
-		jum = int(input('%s╰─ %sjumlah target %s > %s'%(p,o,m,k)))
+		jum = int(input('%s╰─ %sjumlah target %s > %s'%(P,O,M,K)))
 	except:jum=1
 	print ("\n %sPastikan daftar teman bersifat %sPUBLIK "%(P,H))
 	for t in range(jum):
