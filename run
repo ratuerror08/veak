@@ -304,7 +304,7 @@ def pilih(token,coki):
 		exit ("\n%sIsi yang benar %sGOBLOK's%s.....!!!"%(P,H,P))
 	elif slut in['1','01']:
 		PublikGRAPH(token,coki)
-	elif slut in['1','01']:
+	elif slut in['2','02']:
 		gan = input ("%s╰─%s anda ingin crack massal id? y/t%s >%s "%(p,o,m,k))
 		if gan in['']:
 			exit ('%s╰─%s isi yang benar'%(p,m));jeda(2)
@@ -312,10 +312,8 @@ def pilih(token,coki):
 			MassalPublikGRAPH(token,coki)
 		elif gan in['t','T']:
 			PublikGRAPH(token,coki)
-	elif slut in['2','02']:
-		FollowGRAPH(token,coki)
 	elif slut in['3','03']:
-		ComingSoon()
+		FollowGRAPH(token,coki)
 	elif slut in['4','04']:
 		ComingSoon()
 	elif slut in['5','05']:
@@ -326,9 +324,11 @@ def pilih(token,coki):
 		ComingSoon()
 	elif slut in['8','08']:
 		ComingSoon()
+	elif slut in['9','09']:
+		ComingSoon()
 	#elif slut in['9','09']:
 		#useragent()
-	elif slut in['9','09']:
+	elif slut in['10','10']:
 		hasil_fb()
 	elif slut in['10']:
 		file_cp()
