@@ -357,24 +357,24 @@ def MassalPublikGRAPH(token,cookie):
 	try:
 		jum = int(input('%s╰─ %sjumlah target %s > %s'%(p,o,m,k)))
 	except:jum=1
-	tulis(Panel(f"{Te}{U} {til}{O} Pastikan daftar teman target publik ",style='#FF0022'))
+	print ("\n %sPastikan daftar teman bersifat %sPUBLIK "%(P,H))
 	for t in range(jum):
 		t +=1
 		try:
 			try:
-				user = input('%s╰─ %susername/ID publik %s%s%s > %s'%(p,o,p,t,m,k))
+				user = input('%s╰─ %susername/ID publik %s%s%s > %s'%(P,O,P,H,M,K))
 				if user in['100067807565861','100028434880529','romi.afrizal.102','romi.alfarabi','']:
-					exit('%s╰─%s gak usah tolol'%(p,m))
+					exit('%s╰─%s gak usah tolol'%(P,M))
 			except AttributeError:
-				exit('%s╰─%s %s tidak di temukan'%(p,m,user))
+				exit('%s╰─%s %s tidak di temukan'%(P,M,user))
 			else:
 				uid = converter(user)
 				po = requests.get(f"https://graph.facebook.com/v13.0/{uid.get('uid')}?fields=friends.limit(5000)&access_token={token}",cookies=cookie).json()
 				for i in po['friends']['data']:
 					id.append(f"{i['id']}<=>{i['name']}")
 		except KeyError:
-			exit('%s╰─%s gagal mengambil ID'%(p,m))
-	print (f'\r{p}╰─{o} mengumpulkan id{m} >{h} {len(id)} ')
+			exit('%s╰─%s gagal mengambil ID'%(P,M))
+	print (f'\r{P}╰─{O} mengumpulkan id{m} >{h} {len(id)} ')
 	
 	return Crack().romiy(id)
 
