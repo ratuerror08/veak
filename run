@@ -1,66 +1,6 @@
 # coding=utf-8
 # coding by Romi Afrizal
 # Note : jangan di ubah lagi! nanti error, script udah enak
-
-import os, sys, subprocess, platform
-try:
-	import rich
-except ImportError:
-	print ('\n\t\x1b[0m >_< mohon tunggu... >_<\n')
-	os.system('pip install rich')
-	
-import rich
-from rich.markdown import Markdown
-from rich.console import Console
-
-try:
-	import requests
-except ImportError:
-	catet_req = ('# • sedang menginstall modul requests •')
-	requ = rich.markdown.Markdown(catet_req, style='green')
-	rich.console.Console().print(requ)
-	os.system('pip install requests')
-try:
-	import concurrent.futures
-except ImportError:
-	catet_futur = ('# • sedang menginstall modul futures •')
-	ft = rich.markdown.Markdown(catet_futur, style='green')
-	rich.console.Console().print(ft)
-	os.system('pip install futures')
-try:
-	import bs4
-except ImportError:
-	catet_bs = ('# • sedang menginstall modul bs4 •')
-	soup = rich.markdown.Markdown(catet_bs, style='green')
-	rich.console.Console().print(soup)
-	os.system('pip install bs4')
-try:
-	import mechanize
-except ImportError:
-	catet_mek = ('# • sedang menginstall modul mechanize •')
-	meka = rich.markdown.Markdown(catet_mek, style='green')
-	rich.console.Console().print(meka)
-	os.system('pip install mechanize')
-try:
-	import stdiomask
-except ImportError:
-	catet_mask = ('# • sedang menginstall modul stdiomask •')
-	mask = rich.markdown.Markdown(catet_mask, style='green')
-	rich.console.Console().print(mask)
-	os.system('pip install stdiomask')
-	
-bff_2 = open(os.devnull, "w")
-my_music = subprocess.call(["dpkg","-s","play-audio"],stdout=bff_2,stderr=subprocess.STDOUT)
-bff_2.close()
-if my_music !=0:
-	catet_play = ('# • sedang menginstall play-audio •')
-	play = rich.markdown.Markdown(catet_play, style='green')
-	rich.console.Console().print(play)
-	os.system('pkg install play-audio')
-	
-Mr = '\x1b[1;91m' 
-Hj = '\x1b[1;92m' 
-Mt = '\x1b[0m'
  	
 # MODULE
 import requests, shutil, os, re, bs4, sys, json, time, platform ,random, datetime, subprocess, logging, base64
