@@ -1,6 +1,7 @@
 # coding=utf-8
 # coding by Romi Afrizal
 # Note : jangan di ubah lagi! nanti error, script udah enak
+
 import os, sys, subprocess, platform
 try:
 	import rich
